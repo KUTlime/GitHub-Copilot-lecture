@@ -1,33 +1,39 @@
-# Vývoj .NET aplikací s podporou GitHub Copilot
+# GitHub Copilot & .NET – architektura a vývoj aplikací s podporou AI (Vývoj .NET aplikací s podporou GitHub Copilot)
 
-Školení zaměřené na představení GitHub Copilota a jeho integraci do .NET projektů pro efektivní vývoj aplikací s pomocí AI agentů. Účastníci se seznámí s možnostmi delegování vývojových úloh na GitHub Copilot agenty, naučí se je využívat v praxi, jak uhlídat kvalitu jejich práce, efektivně spravovat kontextové okno a jak s jejich pomocí akcelerovat dodávky softwarových řešení postavených na platformě .NET.
+Školení zaměřené na architekturu, návrh a vývoj nejen .NET projektů s efektivním využitím GitHub Copilota jako AI agenta či poskytovatele LLM. Školení reaguje na rapidní změny v přístupu vývoje softwaru, kdy se z vývojáře stává primárně operátor LLM a nadřízený novému, levnému, zkušenému kolegovi s anterográdní amnézií, bez znalostí vašich potřeb nebo vaší aplikace.
+
+Účastníci se seznámí s možnostmi delegování vývojových úloh na GitHub Copilot agenty, naučí se je využívat v praxi, jak uhlídat kvalitu jejich práce, efektivně spravovat kontextové okno, jak benchmarkovat a ladit práci agentů a jak s jejich pomocí akcelerovat dodávky softwarových řešení postavených na platformě .NET.
+
+Znalosti z GitHub Copilot, Gitu a fundamentální přístupy k AI-first architektuře jsou přenositelné do jiných tech-stacků.
 
 ---
 
 ## Toto školení vám pomůže
 
-- Porozumět možnostem GitHub Copilota v kontextu celého vývojového procesu.
-- Efektivně delegovat vývojové úlohy na AI agenty.
-- Nastavit a přizpůsobit Copilot agenty pro váš tým a projekt.
-- Obecně zvýšit kvalitu vašich .NET aplikací.
-- Navrhovat architektury .NET aplikací vhodné pro AI-first přístup.
-- Zvýšit rychlost a kvalitu dodávek bez zvyšování kapacity týmu.
+- Porozumět možnostem GitHub Copilota v kontextu celého vývojového procesu
+- Architektury vhodné pro AI-first projekty na zelené louce
+- Efektivně delegovat vývojové úlohy na AI agenty
+- Nastavit a přizpůsobit Copilot agenty pro váš tým a projekt
+- Obecně zvýšit kvalitu vašich .NET/Java aplikací
+- Navrhovat architektury .NET/Java aplikací vhodné pro AI-first přístup
+- Zvýšit rychlost a kvalitu dodávek bez zvyšování kapacity týmu
 
 ---
 
 ## Kdo by se měl kurzu zúčastnit?
 
-- .NET vývojáři, kteří chtějí pracovat efektivněji při běžných pracovních úkonech.
-- Architekti, kteří chtějí postavit architekturu vhodnou pro AI-first přístup.
-- Senior vývojáři a Tech Leadi hledající způsoby akcelerace vývoje a revize změn.
-- Týmy přecházející na AI-asistovaný způsob práce.
+- Senior .NET vývojáři, kteří chtějí pracovat efektivněji při běžných pracovních úkonech
+- Architekti, kteří chtějí postavit architekturu vhodnou pro AI-first přístup
+- Tech Leadi hledající způsoby akcelerace vývoje a revize změn
+- Týmy přecházející na AI-asistovaný způsob práce
 
 ---
 
 ## Výstupy z kurzu
 
-- Studijní materiály ke všem probíraným tématům.
-- Vzorový repozitář s čistou .NET aplikací připravenou pro práci s Copilot agenty.
+- Studijní materiály ke všem probíraným tématům
+- Vzorový repozitář s čistou .NET aplikací připravenou pro práci s Copilot agenty
+- Postupy, jak si testovat různé modely
 
 ---
 
@@ -80,6 +86,7 @@
 - Generování unit a integračních testů
 - Statická analýza a refaktoring s pomocí agentů
 - Kontinuální integrace a automatizované kontroly
+- Non-LLM nástroje vhodné pro zvýšení kvality a/nebo rychlosti dodání
 
 ## Praktický workshop
 
