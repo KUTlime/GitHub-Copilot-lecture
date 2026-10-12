@@ -1,0 +1,6 @@
+{
+  "type": "https://tools.ietf.org/html/rfc9110#section-15.5.10",
+  "title": "Orders.OnlyPlacedOrderCanBeCancelled",
+  "status": 409,
+  "detail": "Only an order in the Placed state can be cancelled."
+}

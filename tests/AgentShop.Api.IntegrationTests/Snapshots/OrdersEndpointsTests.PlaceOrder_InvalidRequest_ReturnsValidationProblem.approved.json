@@ -1,0 +1,16 @@
+{
+  "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+  "title": "One or more validation errors occurred.",
+  "status": 400,
+  "errors": {
+    "CustomerEmail": [
+      "'Customer Email' is not a valid email address."
+    ],
+    "Lines[0].ProductId": [
+      "'Product Id' must not be empty."
+    ],
+    "Lines[0].Quantity": [
+      "'Quantity' must be between 1 and 100. You entered 0."
+    ]
+  }
+}

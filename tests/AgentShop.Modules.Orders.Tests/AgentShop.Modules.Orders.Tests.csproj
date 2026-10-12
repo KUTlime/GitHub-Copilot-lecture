@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Unit tests of the Orders module's domain and validators. No database, no Docker. -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.TimeProvider.Testing" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Modules\Orders\AgentShop.Modules.Orders\AgentShop.Modules.Orders.csproj" />
+  </ItemGroup>
+</Project>

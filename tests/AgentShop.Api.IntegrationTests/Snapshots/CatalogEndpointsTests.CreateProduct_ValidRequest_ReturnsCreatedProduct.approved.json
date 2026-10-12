@@ -1,0 +1,8 @@
+{
+  "id": "Guid_1",
+  "sku": "KB-001",
+  "name": "Keyboard",
+  "price": 1299.90,
+  "currency": "CZK",
+  "isActive": true
+}

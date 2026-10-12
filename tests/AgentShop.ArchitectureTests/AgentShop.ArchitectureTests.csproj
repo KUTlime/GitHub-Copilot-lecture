@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Executable architecture rules. Fast (no Docker); part of the fast test tier. -->
+  <ItemGroup>
+    <PackageReference Include="TngTech.ArchUnitNET.xUnitV3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\AgentShop.Api\AgentShop.Api.csproj" />
+  </ItemGroup>
+</Project>

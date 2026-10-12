@@ -1,0 +1,6 @@
+{
+  "type": "https://tools.ietf.org/html/rfc9110#section-15.5.10",
+  "title": "Catalog.SkuAlreadyExists",
+  "status": 409,
+  "detail": "A product with the same SKU already exists."
+}

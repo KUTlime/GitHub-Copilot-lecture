@@ -1,0 +1,41 @@
+<Project>
+  <!--
+    Conventions evaluated after each project file.
+    Do NOT change this file without an explicit request.
+  -->
+
+  <!-- A module may expose internals ONLY to its own unit test project (see docs/adr/0006). -->
+  <ItemGroup Condition="'$(IsModuleProject)' == 'true'">
+    <InternalsVisibleTo Include="$(MSBuildProjectName).Tests" />
+  </ItemGroup>
+
+  <!-- Banned APIs (BannedSymbols.txt) apply to production code. Tests use FakeTimeProvider etc. by convention. -->
+  <ItemGroup Condition="'$(IsTestProject)' != 'true'">
+    <AdditionalFiles Include="$(MSBuildThisFileDirectory)BannedSymbols.txt" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <_NormalizedProjectDirectory>$(MSBuildProjectDirectory.Replace('\', '/'))</_NormalizedProjectDirectory>
+    <_ModuleFolder>$([System.Text.RegularExpressions.Regex]::Match($(_NormalizedProjectDirectory), 'src/Modules/([^/]+)/').Groups[1].Value)</_ModuleFolder>
+  </PropertyGroup>
+
+  <!--
+    Fails fast with an actionable message when a project breaks the module conventions.
+    Architecture tests (tests/AgentShop.ArchitectureTests) enforce the type-level rules.
+  -->
+  <Target Name="ValidateProjectConventions" BeforeTargets="BeforeBuild">
+    <Error Condition="'$(_ModuleFolder)' != '' and '$(MSBuildProjectName)' != 'AgentShop.Modules.$(_ModuleFolder)' and '$(MSBuildProjectName)' != 'AgentShop.Modules.$(_ModuleFolder).Contracts'"
+           Text="Project '$(MSBuildProjectName)' is in src/Modules/$(_ModuleFolder)/ but must be named 'AgentShop.Modules.$(_ModuleFolder)' or 'AgentShop.Modules.$(_ModuleFolder).Contracts'. Rename the project or move it to the correct module folder." />
+
+    <ItemGroup Condition="'$(IsContractsProject)' == 'true'">
+      <_ForbiddenContractsReference Include="@(PackageReference)"
+                                    Condition="$([System.String]::Copy('%(Identity)').StartsWith('Microsoft.EntityFrameworkCore')) or $([System.String]::Copy('%(Identity)').StartsWith('Npgsql'))" />
+      <_ForbiddenContractsReference Include="@(FrameworkReference)"
+                                    Condition="'%(Identity)' == 'Microsoft.AspNetCore.App'" />
+      <_ForbiddenContractsReference Include="@(ProjectReference)"
+                                    Condition="$([System.String]::Copy('%(Filename)').StartsWith('AgentShop.Modules.')) and !$([System.String]::Copy('%(Filename)').EndsWith('.Contracts'))" />
+    </ItemGroup>
+    <Error Condition="'@(_ForbiddenContractsReference)' != ''"
+           Text="Contracts project '$(MSBuildProjectName)' must not reference '@(_ForbiddenContractsReference)'. Contracts contain only DTOs, module interfaces and integration events; move the implementation into the internal module project." />
+  </Target>
+</Project>

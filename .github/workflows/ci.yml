@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Definition of Done (eng/verify.ps1)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-dotnet@v6
+        with:
+          global-json-file: global.json
+
+      # The same script developers and agents run locally: solutions in sync, build with zero warnings,
+      # format check, unit + architecture + integration tests (Docker is available on ubuntu-latest).
+      - name: Verify
+        shell: pwsh
+        run: ./eng/verify.ps1
+
+      - name: Upload received snapshots
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: received-snapshots
+          path: tests/**/Snapshots/*.received.json
+          if-no-files-found: ignore

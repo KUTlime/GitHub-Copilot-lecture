@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Public API of the Shipping module: integration events published by Shipping. -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\AgentShop.SharedKernel\AgentShop.SharedKernel.csproj" />
+  </ItemGroup>
+</Project>

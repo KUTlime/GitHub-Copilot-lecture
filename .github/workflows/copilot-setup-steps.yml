@@ -1,0 +1,39 @@
+# Prepares the environment of the GitHub Copilot coding agent before it starts working.
+# The job MUST be named copilot-setup-steps; it only takes effect once merged into the default branch.
+name: Copilot Setup Steps
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+  pull_request:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+
+jobs:
+  copilot-setup-steps:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-dotnet@v6
+        with:
+          global-json-file: global.json
+
+      - name: Restore local tools (dotnet-ef)
+        run: dotnet tool restore
+
+      - name: Restore packages
+        run: dotnet restore AgentShop.slnx
+
+      # Warm up the build so the agent's first build is incremental.
+      - name: Build
+        run: dotnet build AgentShop.slnx --no-restore
+
+      # Pre-pull the PostgreSQL image used by Testcontainers in the integration tests.
+      - name: Pull PostgreSQL image
+        run: docker pull docker.io/library/postgres:18.3

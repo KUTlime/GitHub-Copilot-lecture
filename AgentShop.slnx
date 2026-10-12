@@ -1,0 +1,39 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="AGENTS.md" />
+    <File Path="BannedSymbols.txt" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Build.targets" />
+    <File Path="Directory.Packages.props" />
+    <File Path="global.json" />
+    <File Path="nuget.config" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/AgentShop.Api/AgentShop.Api.csproj" />
+    <Project Path="src/AgentShop.AppHost/AgentShop.AppHost.csproj" />
+    <Project Path="src/AgentShop.ServiceDefaults/AgentShop.ServiceDefaults.csproj" />
+    <Project Path="src/AgentShop.SharedKernel.AspNetCore/AgentShop.SharedKernel.AspNetCore.csproj" />
+    <Project Path="src/AgentShop.SharedKernel/AgentShop.SharedKernel.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/" />
+  <Folder Name="/src/Modules/Catalog/">
+    <Project Path="src/Modules/Catalog/AgentShop.Modules.Catalog.Contracts/AgentShop.Modules.Catalog.Contracts.csproj" />
+    <Project Path="src/Modules/Catalog/AgentShop.Modules.Catalog/AgentShop.Modules.Catalog.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Orders/">
+    <Project Path="src/Modules/Orders/AgentShop.Modules.Orders.Contracts/AgentShop.Modules.Orders.Contracts.csproj" />
+    <Project Path="src/Modules/Orders/AgentShop.Modules.Orders/AgentShop.Modules.Orders.csproj" />
+    <Project Path="src/Modules/Shipping/AgentShop.Modules.Shipping.Contracts/AgentShop.Modules.Shipping.Contracts.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Shipping/">
+    <Project Path="src/Modules/Shipping/AgentShop.Modules.Shipping/AgentShop.Modules.Shipping.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/AgentShop.Api.IntegrationTests/AgentShop.Api.IntegrationTests.csproj" />
+    <Project Path="tests/AgentShop.ArchitectureTests/AgentShop.ArchitectureTests.csproj" />
+    <Project Path="tests/AgentShop.Modules.Catalog.Tests/AgentShop.Modules.Catalog.Tests.csproj" />
+    <Project Path="tests/AgentShop.Modules.Orders.Tests/AgentShop.Modules.Orders.Tests.csproj" />
+    <Project Path="tests/AgentShop.Modules.Shipping.Tests/AgentShop.Modules.Shipping.Tests.csproj" />
+  </Folder>
+</Solution>

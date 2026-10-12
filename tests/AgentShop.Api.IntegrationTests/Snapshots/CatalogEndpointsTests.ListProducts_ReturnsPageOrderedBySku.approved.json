@@ -1,0 +1,23 @@
+{
+  "items": [
+    {
+      "id": "Guid_1",
+      "sku": "A-1",
+      "name": "Product A-1",
+      "price": 100.00,
+      "currency": "CZK",
+      "isActive": true
+    },
+    {
+      "id": "Guid_2",
+      "sku": "B-2",
+      "name": "Product B-2",
+      "price": 100.00,
+      "currency": "CZK",
+      "isActive": true
+    }
+  ],
+  "page": 1,
+  "pageSize": 2,
+  "totalCount": 3
+}

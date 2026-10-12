@@ -1,0 +1,51 @@
+<Project>
+  <!--
+    Shared build settings for every project (and for file-based apps under eng/).
+    Do NOT change this file without an explicit request: these settings are the
+    guardrails that turn agent mistakes into build errors.
+  -->
+
+  <PropertyGroup Label="Language">
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <!-- Nullable reference types: null-safety is checked by the compiler, not by reviewers. -->
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Quality gates">
+    <!-- Every warning is a build error, so "it compiles" means "it is clean". -->
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <!-- Recommended .NET analyzer rule set for the current SDK. -->
+    <AnalysisLevel>latest-recommended</AnalysisLevel>
+    <!-- Code style rules from .editorconfig are enforced during build, not only in the IDE. -->
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <!-- Required for IDE0005 (unused usings) to be reported during build. -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!-- XML docs are not mandatory for every member; the doc file exists only for IDE0005. -->
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Reproducibility">
+    <Deterministic>true</Deterministic>
+    <!-- GitHub Actions sets CI=true; normalizes paths in PDBs for reproducible builds. -->
+    <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Supply chain">
+    <!-- Audit direct and transitive packages for known vulnerabilities. -->
+    <NuGetAudit>true</NuGetAudit>
+    <NuGetAuditMode>all</NuGetAuditMode>
+    <!-- Low/moderate advisories are reported as warnings; high/critical break the build. -->
+    <WarningsNotAsErrors>$(WarningsNotAsErrors);NU1901;NU1902</WarningsNotAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Project classification">
+    <!-- Internal module project, e.g. AgentShop.Modules.Orders (not Contracts, not Tests). -->
+    <IsModuleProject>false</IsModuleProject>
+    <IsModuleProject Condition="$(MSBuildProjectName.StartsWith('AgentShop.Modules.')) and !$(MSBuildProjectName.EndsWith('.Contracts')) and !$(MSBuildProjectName.EndsWith('.Tests'))">true</IsModuleProject>
+    <!-- Public API of a module, e.g. AgentShop.Modules.Orders.Contracts. -->
+    <IsContractsProject>false</IsContractsProject>
+    <IsContractsProject Condition="$(MSBuildProjectName.EndsWith('.Contracts'))">true</IsContractsProject>
+  </PropertyGroup>
+</Project>

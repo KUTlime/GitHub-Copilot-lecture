@@ -1,0 +1,15 @@
+# Test-specific analyzer overrides. Inherits everything from the root .editorconfig.
+
+[*.cs]
+# Test names use underscores: Method_Scenario_ExpectedResult.
+dotnet_diagnostic.CA1707.severity = none
+
+# Test classes must be public for xUnit discovery, even though test projects are executables.
+dotnet_diagnostic.CA1515.severity = none
+
+# Test methods are async without an "Async" suffix; the name describes behavior, not the implementation.
+dotnet_naming_rule.async_methods_end_with_async.severity = none
+
+# Literal URLs and strings in tests are intentional and readable.
+dotnet_diagnostic.CA2234.severity = none
+dotnet_diagnostic.CA1861.severity = none

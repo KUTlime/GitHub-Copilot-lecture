@@ -1,0 +1,26 @@
+{
+  "id": "Guid_1",
+  "customerEmail": "jan.novak@example.com",
+  "status": "Placed",
+  "total": 2250.50,
+  "currency": "CZK",
+  "placedAt": "2026-01-15T10:00:00+00:00",
+  "cancelledAt": null,
+  "shippedAt": null,
+  "lines": [
+    {
+      "productId": "Guid_2",
+      "productName": "Product KB-001",
+      "unitPrice": 1000.00,
+      "quantity": 2,
+      "lineTotal": 2000.00
+    },
+    {
+      "productId": "Guid_3",
+      "productName": "Product MS-001",
+      "unitPrice": 250.50,
+      "quantity": 1,
+      "lineTotal": 250.50
+    }
+  ]
+}

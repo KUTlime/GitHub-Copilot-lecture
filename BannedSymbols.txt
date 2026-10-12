@@ -1,0 +1,13 @@
+# Banned APIs for production code (Microsoft.CodeAnalysis.BannedApiAnalyzers, rule RS0030).
+# Format: <documentation comment ID>;<what to use instead>
+# Do NOT remove entries without an explicit request.
+
+P:System.DateTime.Now;Inject TimeProvider and use GetLocalNow()
+P:System.DateTime.UtcNow;Inject TimeProvider and use GetUtcNow()
+P:System.DateTime.Today;Inject TimeProvider and use GetLocalNow().Date
+P:System.DateTimeOffset.Now;Inject TimeProvider and use GetLocalNow()
+P:System.DateTimeOffset.UtcNow;Inject TimeProvider and use GetUtcNow()
+M:System.Guid.NewGuid;Use Guid.CreateVersion7() via the strongly-typed id factory (e.g. OrderId.New())
+P:System.Threading.Tasks.Task`1.Result;Use await instead of blocking on a task
+M:System.Threading.Tasks.Task.Wait;Use await instead of blocking on a task
+N:Newtonsoft.Json;Use System.Text.Json

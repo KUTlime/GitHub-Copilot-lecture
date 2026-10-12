@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" PrivateAssets="all" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\AgentShop.SharedKernel.AspNetCore\AgentShop.SharedKernel.AspNetCore.csproj" />
+    <ProjectReference Include="..\AgentShop.Modules.Orders.Contracts\AgentShop.Modules.Orders.Contracts.csproj" />
+    <!-- Other modules are reachable ONLY through their Contracts projects. -->
+    <ProjectReference Include="..\..\Catalog\AgentShop.Modules.Catalog.Contracts\AgentShop.Modules.Catalog.Contracts.csproj" />
+    <ProjectReference Include="..\..\Shipping\AgentShop.Modules.Shipping.Contracts\AgentShop.Modules.Shipping.Contracts.csproj" />
+  </ItemGroup>
+</Project>

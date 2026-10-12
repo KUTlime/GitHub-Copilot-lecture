@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <!-- Composition root: wires modules together. Contains no business logic. -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+    <PackageReference Include="Scalar.AspNetCore" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AgentShop.ServiceDefaults\AgentShop.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\AgentShop.SharedKernel.AspNetCore\AgentShop.SharedKernel.AspNetCore.csproj" />
+    <ProjectReference Include="..\Modules\Catalog\AgentShop.Modules.Catalog\AgentShop.Modules.Catalog.csproj" />
+    <ProjectReference Include="..\Modules\Orders\AgentShop.Modules.Orders\AgentShop.Modules.Orders.csproj" />
+    <ProjectReference Include="..\Modules\Shipping\AgentShop.Modules.Shipping\AgentShop.Modules.Shipping.csproj" />
+  </ItemGroup>
+</Project>

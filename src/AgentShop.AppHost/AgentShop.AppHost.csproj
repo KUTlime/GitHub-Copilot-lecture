@@ -1,0 +1,19 @@
+<Project Sdk="Aspire.AppHost.Sdk">
+  <!-- Aspire AppHost: the runnable model of the whole application (API + PostgreSQL).
+       The SDK version is pinned in global.json (msbuild-sdks). Run with: aspire run (or dotnet run). -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <UserSecretsId>7d1f3c2e-5b8a-4e7c-9a61-2f4b8d0c6e15</UserSecretsId>
+    <!-- Same as the Aspire 13.6 template: DCP and the dashboard come from the Aspire CLI bundle
+         (aspire on PATH, or the SDK-paired Aspire.Cli package via dnx). See ASPIRE010. -->
+    <AspireUseCliBundle>true</AspireUseCliBundle>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.PostgreSQL" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AgentShop.Api\AgentShop.Api.csproj" />
+  </ItemGroup>
+</Project>

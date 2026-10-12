@@ -1,0 +1,168 @@
+# Single source of truth for code style and analyzer severities.
+# Do NOT change without an explicit request. Every severity override must say WHY.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+[*.{cmd,bat,sln}]
+end_of_line = crlf
+
+[*.{json,yml,yaml,xml,props,targets,csproj,slnx,config}]
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.cs]
+# ---------------------------------------------------------------------------
+# Code style (enforced in build via EnforceCodeStyleInBuild)
+# ---------------------------------------------------------------------------
+csharp_style_namespace_declarations = file_scoped:warning
+dotnet_diagnostic.IDE0161.severity = warning
+
+csharp_using_directive_placement = outside_namespace:warning
+dotnet_sort_system_directives_first = true
+dotnet_separate_import_directive_groups = false
+dotnet_diagnostic.IDE0065.severity = warning
+
+# Unused usings
+dotnet_diagnostic.IDE0005.severity = warning
+
+csharp_style_var_for_built_in_types = true:suggestion
+csharp_style_var_when_type_is_apparent = true:suggestion
+csharp_style_var_elsewhere = true:suggestion
+
+csharp_style_expression_bodied_methods = when_on_single_line:suggestion
+csharp_style_expression_bodied_properties = true:suggestion
+csharp_style_expression_bodied_accessors = true:suggestion
+csharp_style_expression_bodied_lambdas = true:suggestion
+
+csharp_prefer_braces = true:warning
+dotnet_diagnostic.IDE0011.severity = warning
+
+csharp_style_prefer_primary_constructors = true:suggestion
+csharp_prefer_simple_using_statement = true:suggestion
+csharp_style_prefer_collection_expression = when_types_loosely_match:suggestion
+
+dotnet_style_qualification_for_field = false:warning
+dotnet_style_qualification_for_property = false:warning
+dotnet_style_qualification_for_method = false:warning
+dotnet_style_qualification_for_event = false:warning
+dotnet_diagnostic.IDE0003.severity = warning
+
+dotnet_style_require_accessibility_modifiers = for_non_interface_members:warning
+dotnet_diagnostic.IDE0040.severity = warning
+
+csharp_style_unused_value_discard_variable_preference = true:silent
+
+# Formatting
+csharp_new_line_before_open_brace = all
+csharp_new_line_before_else = true
+csharp_new_line_before_catch = true
+csharp_new_line_before_finally = true
+csharp_indent_case_contents = true
+csharp_indent_switch_labels = true
+csharp_space_after_cast = false
+csharp_space_after_keywords_in_control_flow_statements = true
+
+# ---------------------------------------------------------------------------
+# Naming
+# ---------------------------------------------------------------------------
+dotnet_naming_symbols.interfaces.applicable_kinds = interface
+dotnet_naming_style.prefix_i.required_prefix = I
+dotnet_naming_style.prefix_i.capitalization = pascal_case
+dotnet_naming_rule.interfaces_start_with_i.symbols = interfaces
+dotnet_naming_rule.interfaces_start_with_i.style = prefix_i
+dotnet_naming_rule.interfaces_start_with_i.severity = warning
+
+dotnet_naming_symbols.private_fields.applicable_kinds = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+dotnet_naming_style.underscore_camel.required_prefix = _
+dotnet_naming_style.underscore_camel.capitalization = camel_case
+dotnet_naming_rule.private_fields_underscore.symbols = private_fields
+dotnet_naming_rule.private_fields_underscore.style = underscore_camel
+dotnet_naming_rule.private_fields_underscore.severity = warning
+
+dotnet_naming_symbols.constants.applicable_kinds = field, local
+dotnet_naming_symbols.constants.required_modifiers = const
+dotnet_naming_style.pascal.capitalization = pascal_case
+dotnet_naming_rule.constants_pascal.symbols = constants
+dotnet_naming_rule.constants_pascal.style = pascal
+dotnet_naming_rule.constants_pascal.severity = warning
+
+# Static readonly private fields are treated like constants (e.g. compiled regexes, Error instances).
+dotnet_naming_symbols.private_static_readonly.applicable_kinds = field
+dotnet_naming_symbols.private_static_readonly.applicable_accessibilities = private
+dotnet_naming_symbols.private_static_readonly.required_modifiers = static, readonly
+dotnet_naming_rule.private_static_readonly_pascal.symbols = private_static_readonly
+dotnet_naming_rule.private_static_readonly_pascal.style = pascal
+dotnet_naming_rule.private_static_readonly_pascal.severity = warning
+
+dotnet_naming_symbols.async_methods.applicable_kinds = method
+dotnet_naming_symbols.async_methods.required_modifiers = async
+dotnet_naming_style.async_suffix.required_suffix = Async
+dotnet_naming_style.async_suffix.capitalization = pascal_case
+dotnet_naming_rule.async_methods_end_with_async.symbols = async_methods
+dotnet_naming_rule.async_methods_end_with_async.style = async_suffix
+dotnet_naming_rule.async_methods_end_with_async.severity = warning
+
+dotnet_diagnostic.IDE1006.severity = warning
+
+# ---------------------------------------------------------------------------
+# Analyzer severity overrides (each with a reason)
+# ---------------------------------------------------------------------------
+# ASP.NET Core has no SynchronizationContext; ConfigureAwait(false) is noise here.
+dotnet_diagnostic.CA2007.severity = none
+dotnet_diagnostic.MA0004.severity = none
+
+# Null arguments are prevented by nullable reference types, not by runtime guards.
+dotnet_diagnostic.CA1062.severity = none
+
+# Nested public Request/Response/Validator types inside a slice class are the deliberate
+# vertical-slice pattern (one file per use case); see src/Modules/AGENTS.md.
+dotnet_diagnostic.CA1034.severity = none
+
+# Prefer source-generated [LoggerMessage] methods (see the integration event handlers). Not enforced
+# for every call site in a sample app; message templates are still enforced by CA2254 and CA1873.
+dotnet_diagnostic.CA1848.severity = none
+dotnet_diagnostic.CA2254.severity = warning
+
+# Meziantou: string comparison rules are covered by CA1307/CA1309/CA1310.
+dotnet_diagnostic.MA0006.severity = none
+
+# Meziantou: file name must match type name. Slices keep one class per file anyway; this
+# also flags partial EF migrations and top-level programs.
+dotnet_diagnostic.MA0048.severity = none
+
+# Meziantou: "Use an overload with a CancellationToken" is useful; keep it as a warning.
+dotnet_diagnostic.MA0032.severity = none
+dotnet_diagnostic.MA0040.severity = warning
+
+# Banned APIs (BannedSymbols.txt) are hard errors.
+dotnet_diagnostic.RS0030.severity = error
+
+# Cross-language library rules: this is a C#-only application, not a reusable library consumed from VB.
+# CA1716 flags `Error` (a VB keyword); CA1711 flags `IIntegrationEventHandler` (EventHandler suffix is for delegates).
+dotnet_diagnostic.CA1716.severity = none
+dotnet_diagnostic.CA1711.severity = none
+
+# ---------------------------------------------------------------------------
+# Vertical slices: each slice has its own namespace AND a class with the same name
+# (Features/PlaceOrder/PlaceOrder.cs -> namespace ...Features.PlaceOrder; class PlaceOrder).
+# The per-slice namespace is what the architecture tests use to keep slices isolated.
+# ---------------------------------------------------------------------------
+[**/Features/**/*.cs]
+dotnet_diagnostic.MA0049.severity = none
+
+# ---------------------------------------------------------------------------
+# Generated code: EF Core migrations are produced by `dotnet ef` and never edited by hand.
+# ---------------------------------------------------------------------------
+[**/Persistence/Migrations/*.cs]
+generated_code = true
+dotnet_analyzer_diagnostic.severity = none

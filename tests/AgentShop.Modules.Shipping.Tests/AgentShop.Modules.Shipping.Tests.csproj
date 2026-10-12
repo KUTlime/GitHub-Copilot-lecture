@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Unit tests of the Shipping module's domain. No database, no Docker. -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.TimeProvider.Testing" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Modules\Shipping\AgentShop.Modules.Shipping\AgentShop.Modules.Shipping.csproj" />
+  </ItemGroup>
+</Project>

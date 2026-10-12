@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Black-box HTTP tests against a real PostgreSQL (Testcontainers). Requires Docker.
+       Every test class carries [Trait("Category", "Integration")] so the fast tier can exclude them. -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
+    <PackageReference Include="Npgsql" />
+    <PackageReference Include="Respawn" />
+    <PackageReference Include="Testcontainers.PostgreSql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\AgentShop.Api\AgentShop.Api.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- JsonSnapshot stores approved snapshots under <project>/Snapshots (path-map safe on CI). -->
+    <AssemblyMetadata Include="ProjectDirectory" Value="$(MSBuildProjectDirectory)" />
+  </ItemGroup>
+</Project>

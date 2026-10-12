@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Shared web plumbing for modules: IEndpoint discovery, Result -> IResult mapping, validation filter. -->
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AgentShop.SharedKernel\AgentShop.SharedKernel.csproj" />
+  </ItemGroup>
+</Project>

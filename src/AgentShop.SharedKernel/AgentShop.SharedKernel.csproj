@@ -1,0 +1,4 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Pure kernel shared by all modules: Result, Error, integration event abstractions.
+       Must not depend on ASP.NET Core, EF Core or any module. -->
+</Project>
