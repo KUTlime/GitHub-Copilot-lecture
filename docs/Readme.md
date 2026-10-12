@@ -6,6 +6,7 @@
 
 * Vzájemné představení
 * Zmapování znalostí .NET, AI technologií a GitHub Copilota
+* Zmapování pracovních postupů
 * Seznámení s repositářem kurzu
 * Licenční politika GitHub Copilot
 * Seznámení s repositáři
