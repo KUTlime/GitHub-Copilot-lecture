@@ -29,3 +29,6 @@
 * CI/CD dry run
 * Sonar
 
+## Odkazy
+
+* [How large is the context window on paid Claude plans](https://support.claude.com/en/articles/8606394-how-large-is-the-context-window-on-paid-claude-plans)
