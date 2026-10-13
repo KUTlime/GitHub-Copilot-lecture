@@ -820,6 +820,7 @@ Legenda: 🎥 = video · ✅ = obsah ověřen přímým načtením při tvorbě 
 - Microsoft – *Central Package Management* – https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management
 - Verify – *AI usage* (SKILL.md) – https://github.com/VerifyTests/Verify/blob/main/docs/ai-usage.md
 - TUnit (skills/tunit/SKILL.md) – https://github.com/thomhurst/TUnit
+- EditorConfig – https://developers.mews.com/c-code-style-by-editorconfig-in-net-5-sdk-and-beyond/
 
 ### Instrukce pro agenty a data z praxe
 - ✅ Stephen Toub – *Ten Months with Copilot Coding Agent in dotnet/runtime* (2026-03-23) – https://devblogs.microsoft.com/dotnet/ten-months-with-cca-in-dotnet-runtime/
