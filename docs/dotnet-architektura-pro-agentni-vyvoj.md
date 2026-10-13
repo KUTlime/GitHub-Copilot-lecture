@@ -345,7 +345,7 @@ Zajímavé zjištění rešerše: **neexistuje (zatím) široce citovaný člán
 
 ### 6.2 Nástroje
 
-- **xUnit v3 + Microsoft.Testing.Platform** (stack dotnet/aspire) – strukturovanější výstup snáze parsovatelný nástroji.
+- **xUnit v3 + Microsoft.Testing.Platform v2** (stack dotnet/aspire) – strukturovanější výstup snáze parsovatelný nástroji.
 - **TUnit** – source-generated, paralelní ve výchozím stavu, rychlé; dodává vlastní `skills/tunit/SKILL.md`.
 - **Verify** (snapshot testy) – má `docs/ai-usage.md` s hotovým SKILL.md; výjimky jsou **záměrně strojově parsovatelné**, takže agent umí rozhodnout, zda snapshot přijmout. Pozor: snapshoty agent nesmí přijímat bez lidské kontroly sémantiky.
 - **WebApplicationFactory** – in-memory test server pro testy API (doporučený test „na úrovni slice“).
