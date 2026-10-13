@@ -37,6 +37,7 @@ Poznámky: Copilot = hodnoty `max_prompt_tokens` a `max_context_window_tokens` z
 * NSwag
 * Public API
 * Git hooky
+* BannedApi NuGet
 * Test Driven Development
 * CI/CD dry run
 * Sonar
